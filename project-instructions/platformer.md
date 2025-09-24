@@ -470,6 +470,7 @@ Make sure your game unique and challenging! In order to get full credit your pro
 |----------------------|--------------------------------------------------------------|
 | `git add .`          | Stages all your changes so Git is aware of them.             |
 | `git commit -m "Finalized platformer game"`      | Saves a version of your work with a brief message.           |
+| `git commit -m "Finalized platformer game"`      | Saves a version of your work with a brief message.           |
 | `git push`           | Uploads your committed changes to GitHub, making them live.  |
 
 <br>
