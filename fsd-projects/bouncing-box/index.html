@@ -5,10 +5,33 @@
     <title>Bouncing Box</title>
     <script src="jquery.min.js"></script>
     <style>
+      @keyframes rainbowBox {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .board {
+        height: 100vh;
+        background-color: black;
+        position: relative;
+        overflow: hidden;
+        transition: background-color 0.1s;
+      }
+
+      .flash {
+        background-color: white !important;
+      }
+
       .box {
         width: 70px;
         height: 70px;
-        background-color: teal;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        background-size: 400% 100%;
+        animation: rainbowBox 3s linear infinite;
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -16,16 +39,28 @@
         position: absolute;
         top: 100px;
         left: 0px;
+        color: white;
+        line-height: 70px;
+        font-weight: bold;
+        border-radius: 10px;
       }
 
-      .board {
-        height: 100vh;
+      .footer {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        color: white;
+        font-weight: bold;
+        pointer-events: none;
       }
     </style>
   </head>
 
   <body class="board">
     <div class="box">0</div>
+    <div class="footer">The Bouncy Box!!!!</div>
 
     <script>
       (function () {
@@ -86,6 +121,12 @@
           speed = 5 * points + 10; // Updated speed formula
           moveBoxTo(positionX);
           changeBoxText(points);
+
+          // Flash background
+          board.addClass("flash");
+          setTimeout(function () {
+            board.removeClass("flash");
+          }, 100);
         }
       })();
     </script>
